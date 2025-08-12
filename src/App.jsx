@@ -1,9 +1,13 @@
 import { Outlet } from "react-router-dom";
+import HeroSection from "./components/layout/HeroSection";
 
 function App() {
-  return <h1 className="text-6xl">{
-    <Outlet />
-  }</h1>;
+  return (
+    <div>
+      <HeroSection/>
+      <Outlet />
+    </div>
+  );
 }
 
 export default App;

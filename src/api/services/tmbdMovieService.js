@@ -92,6 +92,26 @@ const movieService = {
       throw new ApiServiceError("Movie Service","Error While Fetching Movie Smiliar", error);
     }
   },
+  getOriginalMovie: async (imgPath) => {
+    try {
+      const response = await tmbdClientAPI.get(
+        TMDB_ENDPOINTS.MOVIE.getOrginalImage(imgPath)
+      );
+      return response.data;
+    } catch (error) {
+      throw new ApiServiceError("Movie Service","Error While Fetching Movie Orginal Image", error);
+    }
+  },
+  getW50Image: async (imgPath) => {
+    try {
+      const response = await tmbdClientAPI.get(
+        TMDB_ENDPOINTS.MOVIE.w500Image(imgPath)
+      );
+      return response.data;
+    } catch (error) {
+      throw new ApiServiceError("Movie Service","Error While Fetching Movie W50 Image", error);
+    }
+  },
 };
 
 export default movieService;

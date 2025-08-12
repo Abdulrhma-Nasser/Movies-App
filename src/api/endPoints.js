@@ -13,6 +13,8 @@ export const TMDB_ENDPOINTS = {
     RECOMMENDATIONS: (id) => `/movie/${id}/recommendations`,
     VIDEOS: (id) => `/movie/${id}/videos`,
     SIMILAR: (id) => `/movie/${id}/similar`,
+    getOrginalImage: (imgPath) => `https://image.tmdb.org/t/p/original/${imgPath}`,
+    w500Image: (imgPath) => `https://image.tmdb.org/t/p/w500/${imgPath}`,
   },
   TV: {
     POPULAR: "/tv/popular",

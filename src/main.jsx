@@ -16,7 +16,7 @@ const router = createBrowserRouter([
       { path: "home", element: <Home />, errorElement: <ErrorPage /> },
       { path: "movies", element: <Movies />, errorElement: <ErrorPage /> },
       { path: "TV", element: <TVSeries />, errorElement: <ErrorPage /> },
-      { path: "Favorite", element: <Favorite />, errorElement: <ErrorPage /> },
+      { path: "favorite", element: <Favorite />, errorElement: <ErrorPage /> },
       { path: "*", element: <NotFound />, errorElement: <ErrorPage /> },
     ],
   },
