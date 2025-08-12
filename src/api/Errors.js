@@ -11,7 +11,14 @@ export class RequestError extends Error {
   }
 }
 export class NetworkError extends Error {
-    constructor() {
-        super('Network Error: No response received');
-    }
+  constructor() {
+    super("Network Error: No response received");
+  }
+}
+export class ApiServiceError extends Error {
+  constructor(serviceType, message, originalError) {
+    super(`[${serviceType}] ${message}`);
+    this.serviceType = serviceType; // "Movie" or "TV"
+    this.originalError = originalError; // Original Axios/API error
+  }
 }
