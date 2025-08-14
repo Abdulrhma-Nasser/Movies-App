@@ -1,29 +1,24 @@
 import { useEffect, useState } from "react";
-import { movieService } from "../../api/services";
+import { movieService, TVService } from "../../api/services";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-import { TMDB_ENDPOINTS } from "../../api/endPoints";
+import Button from "../common/Button";
+import MovieCard from "./MovieCard";
 
-function MoviesList({ movieListCategory }) {
+function MoviesList({ movieListCategory, id }) {
   const [movieList, setMovieList] = useState([]);
   useEffect(() => {
-    movieListCategory === "Popular Movies"
-      ? movieService
-          .getPopularMovies()
-          .then((response) => setMovieList(response.results))
-      : movieService
-          .getTopRatedMovies()
-          .then((response) => setMovieList(response.results));
-  }, [movieListCategory]);
+    fetchMovieCategor(movieListCategory, id).then((response) =>
+      setMovieList(response.results)
+    );
+  }, [movieListCategory, id]);
   return (
-    <div className="container mx-auto font-roboto my-8">
-      <div className="my-10 flex justify-between items-center">
-        <h3 className="text-xl font-semibold text-gray-200">
+    <div className="container mx-auto font-roboto my-8  text-gray-200">
+      <div className="my-10 max-md:px-3  flex justify-between items-center">
+        <h3 className="text-xl font-semibold capitalize">
           {movieListCategory}
         </h3>
-        <button className="ring px-6 py-1 text-gray-200 rounded-3xl hover:bg-gray-100 font-semibold hover:text-black cursor-pointer">
-          View More
-        </button>
+        <Button title={"View More"} />
       </div>
       <Swiper
         modules={[Autoplay]}
@@ -38,16 +33,29 @@ function MoviesList({ movieListCategory }) {
       >
         {movieList.map((movie) => (
           <SwiperSlide key={movie.id} style={{ width: "20%" }}>
-            <img
-              src={TMDB_ENDPOINTS.MOVIE.w500Image(movie.poster_path)}
-              alt={movie.title}
-              className="w-full h-auto"
-            />
+            <MovieCard movie={movie} />
           </SwiperSlide>
         ))}
       </Swiper>
     </div>
   );
+}
+
+function fetchMovieCategor(category, id) {
+  switch (category) {
+    case "recommendation":
+      return movieService.getMovieRecommendation(id);
+    case "similar":
+      return movieService.getMovieSimilar(id);
+    case "top rated":
+      return movieService.getTopRatedMovies();
+    case "popular":
+      return movieService.getPopularMovies();
+    case "tv series":
+      return TVService.getPopularTV();
+    case 'top rated tv series':
+      return TVService.getTopRatedTV();  
+  }
 }
 
 export default MoviesList;

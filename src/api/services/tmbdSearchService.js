@@ -3,7 +3,7 @@ import { TMDB_ENDPOINTS } from "../endPoints";
 import { ApiServiceError } from "../Errors";
 
 const searchService = {
-  movieSearch: async (page = 1, query) => {
+  movieSearch: async (page = 1, query = '') => {
     try {
       const response = await tmbdClientAPI.get(TMDB_ENDPOINTS.SEARCH.MOVIE, {
         params: { page: page, query: query },

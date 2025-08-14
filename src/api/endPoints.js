@@ -1,9 +1,4 @@
 export const TMDB_ENDPOINTS = {
-  ACCOUNT: {
-    FAVORITE_MOVIES: (account_id) => `account/${account_id}/favorite/movies`,
-    FAVORITE_TV: (account_id) => `account/${account_id}/favorite/tv`,
-    ADD_FAVORITE: (account_id) => `account/${account_id}/favorite`,
-  },
   MOVIE: {
     POPULAR: "/movie/popular",
     TOP_RATED: "/movie/top_rated",
@@ -13,7 +8,8 @@ export const TMDB_ENDPOINTS = {
     RECOMMENDATIONS: (id) => `/movie/${id}/recommendations`,
     VIDEOS: (id) => `/movie/${id}/videos`,
     SIMILAR: (id) => `/movie/${id}/similar`,
-    getOriginalImage: (imgPath) => `https://image.tmdb.org/t/p/original/${imgPath}`,
+    getOriginalImage: (imgPath) =>
+      `https://image.tmdb.org/t/p/original/${imgPath}`,
     w500Image: (imgPath) => `https://image.tmdb.org/t/p/w500/${imgPath}`,
   },
   TV: {

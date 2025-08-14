@@ -17,10 +17,10 @@ function SliderItem({ movie }) {
             <h2 className="text-3xl md:text-5xl text-gray-200 font-bold mb-6 text-wrap ">
               {movie.title}
             </h2>
-            <p className="text-xs md:text-sm font-semibold">
+            <p className="text-xs md:text-base font-semibold leading-7">
               {movie.overview}
             </p>
-              <button className="px-6 py-1 rounded-3xl bg-red-600 shadow-lg shadow-red-500/70 my-6 cursor-pointer text-xl font-lg">
+              <button className="px-6 py-1 rounded-3xl bg-red-600 shadow-lg shadow-red-500/50 my-6 cursor-pointer text-xl font-lg font-semibold hover:brightness-75">
                 Watch Now
               </button>
           </div>

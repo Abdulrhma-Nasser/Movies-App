@@ -4,18 +4,20 @@ import "./index.css";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./pages/ErrorPage.jsx";
-import {Movies, NotFound, TVSeries } from "./pages";
-import Favorite from "./pages/Favorite.jsx";
+import { Home, Movies, NotFound } from "./pages";
 
 const router = createBrowserRouter([
   {
-    path: "/home",
+    path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        index: true,
+        element: <Home />,
+        errorElement: <ErrorPage />,
+      },
       { path: "movies", element: <Movies />, errorElement: <ErrorPage /> },
-      { path: "TV", element: <TVSeries />, errorElement: <ErrorPage /> },
-      { path: "favorite", element: <Favorite />, errorElement: <ErrorPage /> },
       { path: "*", element: <NotFound />, errorElement: <ErrorPage /> },
     ],
   },

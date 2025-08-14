@@ -10,7 +10,7 @@ export default function Slider() {
   useEffect(() => {
     movieService
       .getPopularMovies()
-      .then((response) => setCarouselMovies(response.results.slice(5, 8)));
+      .then((response) => setCarouselMovies(response.results.slice(8, 15)));
   }, []);
   return (
       <Swiper
