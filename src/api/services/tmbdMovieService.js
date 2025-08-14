@@ -5,12 +5,14 @@ import { ApiServiceError } from "../Errors";
 const movieService = {
   getMovieByID: async (id) => {
     try {
-      const response = await tmbdClientAPI.get(
-        TMDB_ENDPOINTS.MOVIE.BY_ID(id)
-      );
+      const response = await tmbdClientAPI.get(TMDB_ENDPOINTS.MOVIE.BY_ID(id));
       return response.data;
     } catch (error) {
-      throw new ApiServiceError("Movie","Error While Fetching Movie By ID", error);
+      throw new ApiServiceError(
+        "Movie",
+        "Error While Fetching Movie By ID",
+        error
+      );
     }
   },
   getPopularMovies: async (page = 1) => {
@@ -20,7 +22,11 @@ const movieService = {
       });
       return response.data;
     } catch (error) {
-      throw new ApiServiceError("Movie Service","Error While Fetching Popular Movies", error);
+      throw new ApiServiceError(
+        "Movie Service",
+        "Error While Fetching Popular Movies",
+        error
+      );
     }
   },
   getTopRatedMovies: async (page = 1) => {
@@ -30,7 +36,8 @@ const movieService = {
       });
       return response.data;
     } catch (error) {
-      throw new ApiServiceError("Movie Service",
+      throw new ApiServiceError(
+        "Movie Service",
         "Error While Fetching Top Rated Movies",
         error
       );
@@ -48,7 +55,11 @@ const movieService = {
       );
       return response.data;
     } catch (error) {
-      throw new ApiServiceError("Movie Service","Error While Fetching Movie Details", error);
+      throw new ApiServiceError(
+        "Movie Service",
+        "Error While Fetching Movie Details",
+        error
+      );
     }
   },
   getMovieCredits: async (id) => {
@@ -58,7 +69,11 @@ const movieService = {
       );
       return response.data;
     } catch (error) {
-      throw new ApiServiceError("Movie Service","Error While Fetching Movie Credits", error);
+      throw new ApiServiceError(
+        "Movie Service",
+        "Error While Fetching Movie Credits",
+        error
+      );
     }
   },
   getMovieRecommendation: async (id) => {
@@ -68,7 +83,8 @@ const movieService = {
       );
       return response.data;
     } catch (error) {
-      throw new ApiServiceError("Movie Service",
+      throw new ApiServiceError(
+        "Movie Service",
         "Error While Fetching Movie Recommendation",
         error
       );
@@ -79,7 +95,11 @@ const movieService = {
       const response = await tmbdClientAPI.get(TMDB_ENDPOINTS.MOVIE.VIDEOS(id));
       return response.data;
     } catch (error) {
-      throw new ApiServiceError("Movie Service","Error While Fetching Movie Vedios", error);
+      throw new ApiServiceError(
+        "Movie Service",
+        "Error While Fetching Movie Vedios",
+        error
+      );
     }
   },
   getMovieSimilar: async (id) => {
@@ -89,27 +109,11 @@ const movieService = {
       );
       return response.data;
     } catch (error) {
-      throw new ApiServiceError("Movie Service","Error While Fetching Movie Smiliar", error);
-    }
-  },
-  getOriginalMovie: async (imgPath) => {
-    try {
-      const response = await tmbdClientAPI.get(
-        TMDB_ENDPOINTS.MOVIE.getOrginalImage(imgPath)
+      throw new ApiServiceError(
+        "Movie Service",
+        "Error While Fetching Movie Smiliar",
+        error
       );
-      return response.data;
-    } catch (error) {
-      throw new ApiServiceError("Movie Service","Error While Fetching Movie Orginal Image", error);
-    }
-  },
-  getW50Image: async (imgPath) => {
-    try {
-      const response = await tmbdClientAPI.get(
-        TMDB_ENDPOINTS.MOVIE.w500Image(imgPath)
-      );
-      return response.data;
-    } catch (error) {
-      throw new ApiServiceError("Movie Service","Error While Fetching Movie W50 Image", error);
     }
   },
 };

@@ -4,16 +4,15 @@ import "./index.css";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./pages/ErrorPage.jsx";
-import { Home, Movies, NotFound, TVSeries } from "./pages";
+import {Movies, NotFound, TVSeries } from "./pages";
 import Favorite from "./pages/Favorite.jsx";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/home",
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
-      { path: "home", element: <Home />, errorElement: <ErrorPage /> },
       { path: "movies", element: <Movies />, errorElement: <ErrorPage /> },
       { path: "TV", element: <TVSeries />, errorElement: <ErrorPage /> },
       { path: "favorite", element: <Favorite />, errorElement: <ErrorPage /> },
