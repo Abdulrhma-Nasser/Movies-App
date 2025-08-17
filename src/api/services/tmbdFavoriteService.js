@@ -16,6 +16,9 @@ const favoriteService = {
     const updatedFavorites = this.getFavorites().filter((id) => id !== movieId);
     localStorage.setItem("favMovies", JSON.stringify(updatedFavorites));
   },
+  removeAllFavorites() {
+    localStorage.clear();
+  },
 
   isFavorite(movieId) {
     return this.getFavorites().includes(movieId);

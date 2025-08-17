@@ -4,12 +4,12 @@ import { HeartIcon as OutlinedHeart } from "@heroicons/react/24/outline";
 import { ArrowRightEndOnRectangleIcon as ArrowRight } from "@heroicons/react/24/outline";
 import { favoriteService } from "../../api/services";
 import { useEffect, useState } from "react";
-export default function MovieCard({ movie }) {
+export default function MovieCard({ movie, onUnFavorite }) {
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     setIsFavorite(favoriteService.isFavorite(movie.id));
-  }, [movie.id]);
+  }, [movie]);
 
   function onTogglingFavorite(movieId) {
     if (isFavorite) {
@@ -33,7 +33,10 @@ export default function MovieCard({ movie }) {
       <div className="flex p-2 xl:hidden group-hover/button:flex justify-center items-center gap-x-5 lg:absolute lg:left-1/2 lg:top-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 mt-1 w-full ">
         {isFavorite ? (
           <SolidHeart
-            onClick={() => onTogglingFavorite(movie.id)}
+            onClick={() => {
+              onTogglingFavorite(movie.id);
+              onUnFavorite(movie);
+            }}
             className="w-5 h-5 md:w-7 md:h-7  lg:w-12 lg:h-12 text-red-600 lg:p-3 lg:bg-gray-100/30 lg:rounded-3xl cursor-pointer"
           />
         ) : (

@@ -10,15 +10,15 @@ export default function Header({position = 'block'}) {
           <h1 className="text-2xl font-semibold md:text-4xl">Cinema</h1>
         </div>
         <nav className="flex items-center justify-between gap-x-4 text-lg font-semibold md:text-xl md:gap-x-8">
-          <Link to="/" className="group/link relative">
+          <Link to="/" replace={true} className="group/link relative">
             Home
             <span className="absolute bottom-[-6px] left-0 w-0 h-0 group-hover/link:w-full group-hover/link:h-0.5  bg-red-600 transition[width] duration-300 ease-in-out"></span>
           </Link>
-          <Link to="movies" className="group/link relative">
+          <Link replace={true} to="/movies" className="group/link relative">
             Movies
             <span className="absolute bottom-[-6px] left-0 w-0 h-0 group-hover/link:w-full group-hover/link:h-0.5 bg-red-600 transition-[width] duration-300 ease-in-out"></span>
           </Link>
-          <Link to="favorite" className="group/link relative">
+          <Link replace={true} to="/favorites" className="group/link relative">
             Favorites
             <span className="absolute bottom-[-6px] left-0 w-0 h-0 group-hover/link:w-full group-hover/link:h-0.5 bg-red-600 transition-[width] duration-300 ease-in-out"></span>
           </Link>

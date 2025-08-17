@@ -32,13 +32,13 @@ function Movies() {
           placeholder="Search For A Movie"
           className="border-2 border-neutral-800 w-1/2 p-1 rounded-xl bg-transparent text-red-500 focus:outline-0 placeholder:text-gray-100/40 placeholder:text-sm placeholder:p-1"
         />
-        <h3 className="px-6 py-1 ml-2 rounded-3xl bg-red-600 shadow-xl shadow-red-500/40 text-gray-200 capitalize text-xl font-lg font-semibold">
+        <h3 className=" px-2 py-1 rounded-2xl lg:px-6 lg:py-1 ml-2 lg:rounded-3xl bg-red-600 shadow-xl shadow-red-500/40 text-gray-200 capitalize text-base lg:text-xl font-lg font-bold">
           automatic search
         </h3>
       </div>
-      <div className="grid grid-cols-5 gap-6 container mx-auto my-15 ">
+      <div className="grid grid-cols-4 gap-6 container mx-auto my-15 ">
         {results.map((result) => {
-          return <MovieCard movie={result} />;
+          return <MovieCard movie={result} key={result.id} />;
         })}
       </div>
     </>

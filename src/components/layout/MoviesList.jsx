@@ -18,7 +18,7 @@ function MoviesList({ movieListCategory, id }) {
         <h3 className="text-xl font-semibold capitalize">
           {movieListCategory}
         </h3>
-        <Button title={"View More"} />
+        <Button title={"View More"}/>
       </div>
       <Swiper
         modules={[Autoplay]}

@@ -3,8 +3,6 @@ function Home() {
   const categories = [
     "top rated",
     "popular",
-    "tv series",
-    "top rated tv series",
   ];
   return (
     <>
