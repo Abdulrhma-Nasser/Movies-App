@@ -6,7 +6,7 @@ const searchService = {
   movieSearch: async (page = 1, query = '') => {
     try {
       const response = await tmbdClientAPI.get(TMDB_ENDPOINTS.SEARCH.MOVIE, {
-        params: { page: page, query: query },
+        params: { page: page, query: query, include_adult:false },
       });
       return response.data;
     } catch (error) {

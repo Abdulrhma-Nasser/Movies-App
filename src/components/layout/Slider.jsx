@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import movieService from "../../../api/services/tmbdMovieService";
+import movieService from "../../api/services/tmbdMovieService";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";

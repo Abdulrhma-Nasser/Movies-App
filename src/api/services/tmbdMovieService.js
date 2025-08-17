@@ -18,7 +18,7 @@ const movieService = {
   getPopularMovies: async (page = 1) => {
     try {
       const response = await tmbdClientAPI.get(TMDB_ENDPOINTS.MOVIE.POPULAR, {
-        params: { page },
+        params: { page:page },
       });
       return response.data;
     } catch (error) {

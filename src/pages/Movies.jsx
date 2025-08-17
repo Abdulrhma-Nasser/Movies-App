@@ -1,71 +1,48 @@
-import Header from "../components/layout/Header";
+import { useEffect, useState } from "react";
+import { MovieCard, Header } from "../components";
 import { searchService } from "../api/services";
-
-import { useState } from 'react';
-import MovieCard from "../components/layout/MovieCard";
+import { TMDB_ENDPOINTS } from "../api/endPoints";
 
 function Movies() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  const onSearch = async (query) => {
-    try {
-      setIsLoading(true);
-      setError(null);
-      
-      if (query.trim().length < 2) {
-        setSearchResults([]);
-        return;
-      }
-
-      const response = await searchService.movieSearch(1, query);
-      setSearchResults(response.results || []);
-    } catch (err) {
-      setError("Failed to search movies");
-      console.error("Search error:", err);
-    } finally {
-      setIsLoading(false);
+  const [results, setResults] = useState([""]);
+  useEffect(() => {
+    if (searchQuery.trim() !== "") {
+      searchService.movieSearch(1, searchQuery).then((response) => {
+        setResults(response.results);
+      });
+    } else {
+      setResults([]);
     }
-  };
+  }, [searchQuery]);
+
+  function onSearch(searchQuery) {
+    setSearchQuery(searchQuery);
+  }
 
   return (
-    <div className="">
-      <div className="inset-0 bg-[url('/src/assets/footer-bg.jpg')] bg-cover bg-center z-0 p-12 text-center">
-        <Header />
-      </div>
-
-      <div className="m-8">
+    <>
+      <Header />
+      <div className=" container mx-auto flex justify-center w-full mt-5 p-2">
         <input
-          className="w-1/4 pl-4 pr-10 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent bg-transparent text-red-600"
           type="text"
-          value={searchQuery}
-          placeholder="Search Movies..."
           onChange={(e) => {
-            setSearchQuery(e.target.value);
             onSearch(e.target.value);
           }}
+          placeholder="Search For A Movie"
+          className="border-2 border-neutral-800 w-1/2 p-1 rounded-xl bg-transparent text-red-500 focus:outline-0 placeholder:text-gray-100/40 placeholder:text-sm placeholder:p-1"
         />
-        
-        {isLoading && (
-          <div className="mt-2 text-blue-500">Searching...</div>
-        )}
-        {error && (
-          <div className="mt-2 text-red-500">{error}</div>
-        )}
+        <h3 className="px-6 py-1 ml-2 rounded-3xl bg-red-600 shadow-xl shadow-red-500/40 text-gray-200 capitalize text-xl font-lg font-semibold">
+          automatic search
+        </h3>
       </div>
-
-      <div className="grid md:grid-cols-6 grid-cols-3 gap-10">
-        {searchResults.map(movie => (
-          <div key={movie.id} >
-            <MovieCard movie={movie}/>
-          </div>
-        ))}
+      <div className="grid grid-cols-5 gap-6 container mx-auto my-15 ">
+        {results.map((result) => {
+          return <MovieCard movie={result} />;
+        })}
       </div>
-    </div>
+    </>
   );
 }
-
 
 export default Movies;

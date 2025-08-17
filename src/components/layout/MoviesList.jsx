@@ -23,7 +23,7 @@ function MoviesList({ movieListCategory, id }) {
       <Swiper
         modules={[Autoplay]}
         grabCursor={true}
-        spaceBetween={10}
+        spaceBetween={13}
         slidesPerView="auto"
         freeMode={true}
         autoplay={{
@@ -32,7 +32,7 @@ function MoviesList({ movieListCategory, id }) {
         }}
       >
         {movieList.map((movie) => (
-          <SwiperSlide key={movie.id} style={{ width: "20%" }}>
+          <SwiperSlide key={movie.id} style={{ width: "22%" }}>
             <MovieCard movie={movie} />
           </SwiperSlide>
         ))}

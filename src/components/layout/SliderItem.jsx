@@ -1,4 +1,4 @@
-import { TMDB_ENDPOINTS } from "../../../api/endPoints";
+import { TMDB_ENDPOINTS } from "../../api/endPoints";
 function SliderItem({ movie }) {
   const movieImages = {
     movieOriginalImage: TMDB_ENDPOINTS.MOVIE.getOriginalImage(
