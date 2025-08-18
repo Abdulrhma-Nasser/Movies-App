@@ -12,23 +12,11 @@ export const TMDB_ENDPOINTS = {
       `https://image.tmdb.org/t/p/original/${imgPath}`,
     w500Image: (imgPath) => `https://image.tmdb.org/t/p/w500/${imgPath}`,
   },
-  TV: {
-    POPULAR: "/tv/popular",
-    TOP_RATED: "/tv/top_rated",
-    BY_ID: (id) => `/tv/${id}`,
-    DETAILS: (id) => `/tv/${id}`,
-    CREDITS: (id) => `/tv/${id}/credits`,
-    VIDEOS: (id) => `/tv/${id}/videos`,
-    SIMILAR: (id) => `/tv/${id}/similar`,
-  },
   SEARCH: {
     MOVIE: "/search/movie",
-    TV: "/search/tv",
   },
   TRENDING: {
-    ALL: (timeWindow = "week") => `/trending/all/${timeWindow}`,
     MOVIES: (timeWindow = "week") => `/trending/movie/${timeWindow}`,
-    TV: (timeWindow = "week") => `/trending/tv/${timeWindow}`,
     PEOPLE: (timeWindow = "week") => `/trending/person/${timeWindow}`,
   },
 };

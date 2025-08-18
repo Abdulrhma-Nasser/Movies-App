@@ -18,7 +18,7 @@ const movieService = {
   getPopularMovies: async (page = 1) => {
     try {
       const response = await tmbdClientAPI.get(TMDB_ENDPOINTS.MOVIE.POPULAR, {
-        params: { page:page },
+        params: { page: page },
       });
       return response.data;
     } catch (error) {
@@ -112,6 +112,20 @@ const movieService = {
       throw new ApiServiceError(
         "Movie Service",
         "Error While Fetching Movie Smiliar",
+        error
+      );
+    }
+  },
+  getTrendingMovies: async (timeWindow = "week") => {
+    try {
+      const response = await tmbdClientAPI.get(
+        TMDB_ENDPOINTS.TRENDING.MOVIES(timeWindow)
+      );
+      return response.data;
+    } catch (error) {
+      throw new ApiServiceError(
+        "Movie Service",
+        "Error While Fetching Trending",
         error
       );
     }

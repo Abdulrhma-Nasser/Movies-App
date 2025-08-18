@@ -18,7 +18,7 @@ function MoviesList({ movieListCategory, id }) {
         <h3 className="text-xl font-semibold capitalize">
           {movieListCategory}
         </h3>
-        <Button title={"View More"}/>
+        <Button title={"View More"} />
       </div>
       <Swiper
         modules={[Autoplay]}
@@ -53,8 +53,10 @@ function fetchMovieCategor(category, id) {
       return movieService.getPopularMovies();
     case "tv series":
       return TVService.getPopularTV();
-    case 'top rated tv series':
-      return TVService.getTopRatedTV();  
+    case "top rated tv series":
+      return TVService.getTopRatedTV();
+    case "trending":
+      return movieService.getTrendingMovies("week");
   }
 }
 

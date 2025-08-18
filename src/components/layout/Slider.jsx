@@ -7,10 +7,11 @@ import "swiper/css/autoplay";
 import SliderItem from "./SliderItem";
 export default function Slider() {
   const [carouselMovies, setCarouselMovies] = useState([]);
+
   useEffect(() => {
     movieService
       .getPopularMovies()
-      .then((response) => setCarouselMovies(response.results.slice(8, 15)));
+      .then((response) => setCarouselMovies(response.results.slice(15, 18)));
   }, []);
   return (
       <Swiper

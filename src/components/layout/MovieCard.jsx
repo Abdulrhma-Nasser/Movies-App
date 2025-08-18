@@ -4,8 +4,10 @@ import { HeartIcon as OutlinedHeart } from "@heroicons/react/24/outline";
 import { ArrowRightEndOnRectangleIcon as ArrowRight } from "@heroicons/react/24/outline";
 import { favoriteService } from "../../api/services";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 export default function MovieCard({ movie, onUnFavorite }) {
   const [isFavorite, setIsFavorite] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsFavorite(favoriteService.isFavorite(movie.id));
@@ -45,7 +47,7 @@ export default function MovieCard({ movie, onUnFavorite }) {
             className="w-5 h-5 md:w-7 md:h-7 lg:w-12 lg:h-12 text-gray-200 lg:p-3 lg:bg-gray-100/30 lg:rounded-3xl cursor-pointer transition hover:text-red-600"
           />
         )}
-        <ArrowRight className=" w-5 h-5 md:w-7 md:h-7 lg:w-12 lg:h-12 text-gray-200 lg:p-3 lg:bg-gray-100/30 lg:rounded-3xl cursor-pointer transition hover:text-red-600 text-sm" />
+        <ArrowRight className=" w-5 h-5 md:w-7 md:h-7 lg:w-12 lg:h-12 text-gray-200 lg:p-3 lg:bg-gray-100/30 lg:rounded-3xl cursor-pointer transition hover:text-red-600 text-sm" onClick={() => navigate(`/movieDetails/${movie.id}`)}/>
       </div>
 
       <h4 className="text-sm md:text-xl font-semibold text-gray-200 group-hover/button:brightness-100 brightness-100 lg:mt-2">
